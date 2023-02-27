@@ -1,0 +1,148 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --soft-blue: hsl(215, 51%, 70%);
+  --cyan: hsl(178, 100%, 50%);
+  --cyan__alpha: hsla(178, 100%, 50%, 0.5);
+
+  --bg-blue: hsl(217, 54%, 11%);
+  --card-blue: hsl(216, 50%, 16%);
+  --line-blue: hsl(215, 32%, 27%);
+
+  --white: hsl(0, 0%, 100%);
+
+  --radius: 12px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+body {
+  background-color: var(--bg-blue);
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+.card {
+  background-color: var(--card-blue);
+  width: 350px;
+  border-radius: var(--radius);
+  padding: 1.2em;
+
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1em;
+
+  color: var(--soft-blue);
+
+  box-shadow: 0px 25px 0px 49px rgba(0, 0, 0, 0.05),
+    0px 20px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card--image {
+  cursor: pointer;
+  border-radius: calc(var(--radius) / 2);
+  overflow: hidden;
+  aspect-ratio: 1 /1;
+
+  position: relative;
+}
+.card--image img {
+  width: 100%;
+}
+.card--image::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url('./images/icon-view.svg') no-repeat 50% 50% var(--cyan__alpha);
+  opacity: 0;
+  transition: opacity 0.15s linear;
+}
+.card--image:hover::after {
+  opacity: 1;
+}
+.card--heading {
+  cursor: pointer;
+  color: var(--white);
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-top: 0.2em;
+
+  transition: color 0.15s linear;
+}
+.card--heading:hover {
+  color: var(--cyan);
+}
+.card--description {
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5em;
+}
+.card--details {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  font-weight: 600;
+  margin: 0.5em 0;
+}
+.card--details--line {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.card--details--line::before {
+  content: '';
+  width: 1em;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+.card--details--line__eth {
+  color: var(--cyan);
+}
+.card--details--line__eth::before {
+  background-image: url('./images/icon-ethereum.svg');
+}
+
+.card--details--line__days::before {
+  background-image: url('./images/icon-clock.svg');
+}
+.card--author {
+  border-top: 1px solid var(--line-blue);
+}
+.card--author {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+  font-weight: 300;
+
+  padding-top: 1em;
+}
+.card--author a {
+  text-decoration: none;
+  color: var(--white);
+  margin-left: 8px;
+
+  transition: color 0.15s linear;
+}
+.card--author a:hover {
+  color: var(--cyan);
+}
+.card--author--avatar {
+  width: 35px;
+  height: 35px;
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  margin-right: 12px;
+}
